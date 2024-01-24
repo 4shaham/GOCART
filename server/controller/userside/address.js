@@ -61,7 +61,7 @@ exports.deleteAddress=async(req,res)=>{
      return value._id.toString() === addressId;
        
    });
-   console.log(index)
+   
   
    d.address.splice(index,1)
    await d.save()   
