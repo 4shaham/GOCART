@@ -1,0 +1,178 @@
+
+
+
+
+    
+  <!DOCTYPE html> 
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+      <!-- Boxicons -->
+      <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">    
+       <!-- My CSS -->
+       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+       <link rel="stylesheet" href="/css/dashboard.css">
+      <title>GOCART AdminHub</title>
+  </head>
+  <body>
+
+
+    <!-- SIDEBAR -->
+    <section id="sidebar">
+        <a href="#" class="brand">
+            <h2 class="text p-5" style="color: black;">GOCART</h2>
+        </a>
+        <ul class="side-menu top">
+			<li >
+				<a href="/admin/">
+					<i class='bx bxs-dashboard' ></i>
+					<span class="text">Dashboard</span>
+				</a>
+			</li>
+			<li>
+				<a href="/admin/productManagment?page=1">
+					<!-- /admin/addproduct -->
+					<i class='bx bxs-shopping-bag-alt' ></i>
+					<span class="text">ProductManagment</span>
+				</a>
+			</li>
+			<li class="active">
+				<a href="/admin/UserManagment?page=1">
+					<i class='bx bxs-doughnut-chart' ></i>
+					<span class="text">User managment</span>
+				</a>
+			</li>
+			<li>
+				<a href="/admin/OrderManagment">
+					<i class='bx bxs-group' ></i>
+					<span class="text">Order Managment</span>
+				</a>
+			</li>
+            <li>
+				<a href="/admin/cateogaryManagment?page=1">
+					<i class='bx bxs-cog' ></i>
+					<span class="text"> Cateogary Managment</span>
+				</a>   
+			</li>
+			<li>
+				<a href="/admin/CoupenManagment">
+					<!-- /admin/addproduct -->
+					<i class='bx bxs-shopping-bag-alt' ></i>
+					<span class="text">Coupen Managment</span>
+				</a>
+			</li>
+            <li>
+				<a href="/admin/offermanagment">
+					<!-- /admin/addproduct -->
+					<i class='bx bxs-shopping-bag-alt'></i>
+					<span class="text">Offer Managment</span>
+				</a>
+			</li>
+            <li >
+				<a href="/admin/referralOffer">
+					<!-- /admin/addproduct -->
+					<i class='bx bxs-shopping-bag-alt'></i>
+					<span class="text">Referral Managment</span>
+				</a>
+			</li>
+		</ul>
+        <ul class="side-menu">
+
+            <li>
+                <a href="#" class="logout">
+                    <i class='bx bxs-log-out-circle'></i>
+                    <span class="text">Logout</span>
+                </a>
+            </li>
+        </ul>
+    </section>
+    <!-- SIDEBAR -->
+
+
+
+    <!-- CONTENT -->
+    <section id="content">
+
+        <!-- MAIN -->
+        <main>
+            <div class="head-title">
+                <div class="left">
+                    <h1>User Managment</h1>
+                    <!-- <ul class="breadcrumb">
+						<li>
+							<a href="#">Dashboard</a>
+						</li>
+						<li><i class='bx bx-chevron-right' ></i></li>
+						<li>
+							<a class="active" href="#">Home</a>
+						</li>
+					</ul> -->
+                </div>
+
+            </div>
+            
+        <div class="container " style="background-color: rgb(233, 230, 221);">
+          
+                    <% for(let i=0;i<Userdb.length;i++) {%>
+                        <div class="container-body bg-white d-flex justify-content-between m-2 text-dark" style="border-radius: 20px; height: 70px;">
+    
+                            <div class="product d-flex">
+                                <i class="bi bi-person-fill m-1" style="font-size: 45px;"></i>
+                                <div class="product-body m-3 ">
+                                    <p>name:<%= Userdb[i].name %></p>  
+                                </div>      
+                            </div>
+                            <div class="product-body m-3 text">
+                                <h5>email:<%= Userdb[i].email %></h5>  
+                            </div>
+                            <div class="product-body m-3 text">
+                                <h5><%= Userdb[i].status %></h5>  
+                            </div>
+                            <div class="product-body m-3">
+                                <!-- <a href=""><i class="bi bi-recycle" style="font-size: 25px;color:green;"></i></a>   
+                                <a href=""><i class="bi bi-trash-fill" style="font-size: 25px;color: rgb(196, 10, 10);" ></i></i></a>    -->
+                                <% if (Userdb[i].blocked!==true) { %>
+                                        <a href="/admin/blockeduser?id=<%= Userdb[i]._id%>">
+                                        <button class="btn btn-danger" >Block</button>
+                                        </a>
+                                  <% } else { %>
+                                    
+                                    <a href="/admin/unblockeduser?id=<%= Userdb[i]._id %>">
+                                        <button class="btn btn-success">Unblock</button>
+                                    </a>
+                                  <% } %>
+                            </div>  
+                        </div> 
+                    <% } %>
+                    
+                   
+        </div>
+
+
+    </section>
+    <nav aria-label="Page navigation example">
+		<ul class="pagination justify-content-center">
+			<li class="page-item">
+				<a class="page-link <%= (cn==1)?'d-none':'' %>" href="/admin/UserManagment?page=<%= cn - 1 %>"
+					tabindex="-1">Previous</a>
+		    </li>
+
+            <% for(let i=0;i<count;i++) { %>
+				    <li class="page-item"><a class="page-link" href="/admin/UserManagment?page=<%= i + 1 %>"><%= i + 1 %></a></li>
+		    <% } %>		     
+			<li class="page-item ">
+						<a class="page-link <%= (cn==count)?'d-none':'' %>" 
+							href="/admin/UserManagment?page=<%= cn + 1 %>">Next</a>
+		    </li>
+		</ul>
+	</nav>
+    <!-- CONTENT -->
+
+
+    <script src="script.js"></script>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</html>

@@ -1,0 +1,263 @@
+<%-include("header")-%>
+
+  <!-- registration Page -->
+
+  <!-- <div class="container-fluid">
+        <div></div>
+       </div> -->
+
+  <section style="background-color: black;">
+
+    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+      <div class="container h-100 p-5 text-white">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-12 col-md-9 col-lg-7 col-xl-6 ">
+            <div class="card bg-dark" style="border-radius: 15px; ">
+              <div class="card-body p-5">
+                <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+                <div>
+                  <% if (bodyMessage) { %>
+                    <!-- <div class="alert alert-danger" style="background-color: black;" role="alert"> -->
+                    <h5 class="text-danger text-center">
+                      <%=bodyMessage %>
+                    </h5>
+                    <!-- </div> -->
+                    <% } %>
+                      <% if(emailunique) { %>
+                        <h5 class="text-danger text-center">
+                          <%=emailunique %>
+                        </h5>
+                        <% } %>
+                </div>
+                <form action="<%= (err?.referralCodeStatus)?(`/api/register?referralCode=${err.referralCode}`):'/api/register' %> " method="post" id="myForm">
+
+                  <div class="form-outline mb-2">
+                    <label class="form-label" for="form3Example1cg">Email</label>
+                    <input type="email" id="email" class="form-control form-control-lg" name="Email" />
+                    <small id="emailErr" class="text-danger"></small>
+                  </div>
+
+                  <div class="form-outline mb-2">
+                    <label class="form-label" for="form3Example1cg">Your Name</label>
+                    <input type="text" id="name" class="form-control form-control-lg" name="name" />
+                    <small id="nameErr" class="text-danger"></small>
+                  </div>
+
+                  <!-- <div class="form-outline mb-4">
+                        <input type="email" id="form3Example3cg" class="form-control form-control-lg" name="email" />
+                        <label class="form-label" for="form3Example3cg">Your Email</label>
+                      </div> -->
+
+                  <div class="form-outline mb-2">
+                    <label class="form-label" for="form3Example4cg">Password</label>
+                    <input type="password" id="password" class="form-control form-control-lg" name="password" />
+                    <small id="passwordErr" class="text-danger"></small>
+                    <% if (requiredPassword) { %>
+                      <p class="text-danger text-start">
+                        <%= requiredPassword %>
+                      </p>
+                      <% } %>
+                        <% if ( emailValidation) { %>
+                          <p class="text-danger text-start">
+                            <%= emailValidation %>
+                          </p>
+
+                          <% } %>
+
+
+                  </div>
+
+                  <div class="form-outline mb-2">
+                    <label class="form-label" for="form3Example4cdg">confirm your password</label>
+                    <input type="password" id="confirmPassword" class="form-control form-control-lg"
+                      name="confirmPassword" />
+                    <small id="cPasswordErr" class="text-danger"></small>
+                    <% if (requiredConfirmPassword) { %>
+                      <p class="text-danger text-start">
+                        <%=requiredConfirmPassword %>
+                      </p>
+                      <% } %>
+                        <% if (confimPasswordErr) { %>
+                          <p class="text-danger text-start">
+                            <%=confimPasswordErr %>
+                          </p>
+                          <% } %>
+
+
+                            <!-- <label class="form-label" for="form3Example4cdg">email</label> -->
+                  </div>
+
+
+
+                  <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-warning btn-block btn-lg gradient-custom-4 text-body"
+                      id="registerBtn">Created Account</button>
+                  </div>
+
+                  <!-- <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="#!"
+                          class="fw-bold text-body"><u>Login here</u></a></p> -->
+
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+
+
+    var btn = document.getElementById('registerBtn')
+
+
+
+    btn.addEventListener('click', (event) => {
+
+      event.preventDefault()
+
+      var name = document.getElementById('name').value
+      var email = document.getElementById('email').value
+      var password = document.getElementById('password').value
+      var confirmPassword = document.getElementById('confirmPassword').value
+
+      let nameErrMsg = []
+      let emailErrMsg = []
+      let passwordErrMsg = []
+      let confirmPasswordErrMsg = []
+
+
+      let nameErrField = document.getElementById('nameErr')
+      let cPasswordErrField = document.getElementById('cPasswordErr')
+      let passwordErrField = document.getElementById('passwordErr')
+      let emailErrField = document.getElementById('emailErr')
+
+
+
+
+      const form = btn.form
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      const passworRegex=/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()-=_+[\]{};':"\\|,.<>/?]).{8,}$/;
+
+      if (!emailRegex.test(email)&&email.trim() !== '') {
+        emailErrMsg.push('Invalid email format');
+      }
+
+      // if (password.length < 8) {
+      //   passwordErrMsg.push('Password should be at least 8 characters long')
+      // }
+      // if (password.length > 12) {
+      //   passwordErrMsg.push('Password should be at most 12 characters long')
+      // }
+      if(!passworRegex.test(password)&&password.trim() !== ''){
+        passwordErrMsg.push('Weak password. Use a combination of uppercase and lowercase letters, numbers, and special characters. Ensure it is at least 8 characters long.')
+      }
+
+      if (password != confirmPassword) {
+
+        confirmPasswordErrMsg.push('Passwords do not match')
+
+      }
+
+
+      if (name.trim() === '') {
+        nameErrMsg.push('This field is required')
+      }
+
+      if (email.trim() === '') {
+        emailErrMsg.push('This field is required')
+      }
+
+      if (password.trim() === '') {
+        passwordErrMsg.push('This field is required')
+      }
+
+      if (confirmPassword.trim() === '') {
+        confirmPasswordErrMsg.push('This field is required')
+      }
+
+
+
+
+      if(passwordErrMsg.length>0){
+        document.getElementById('password').classList.add('is-invalid')
+        document.getElementById('password').classList.remove('is-Valid')
+      }else{
+        document.getElementById('password').classList.remove('is-invalid')
+        document.getElementById('password').classList.add('is-valid')
+      }
+
+      if(confirmPasswordErrMsg.length>0){
+        document.getElementById('confirmPassword').classList.add('is-invalid')
+        document.getElementById('confirmPassword').classList.remove('is-Valid')
+      }else{
+        document.getElementById('confirmPassword').classList.remove('is-invalid')
+        document.getElementById('confirmPassword').classList.add('is-valid')
+      }
+
+
+      if(emailErrMsg.length>0){
+        document.getElementById('email').classList.add('is-invalid')
+        document.getElementById('email').classList.remove('is-Valid')
+
+      }else{
+        document.getElementById('email').classList.remove('is-invalid')
+        document.getElementById('email').classList.add('is-valid')
+      }
+
+
+      if(nameErrMsg.length>0){
+        document.getElementById('name').classList.add('is-invalid')
+        document.getElementById('name').classList.remove('is-Valid')
+      }else{
+        document.getElementById('name').classList.remove('is-invalid')
+        document.getElementById('name').classList.add('is-valid')
+      }
+
+
+
+
+
+      nameErrField.innerText = nameErrMsg.join(',')
+      cPasswordErrField.innerText = confirmPasswordErrMsg.join(',')
+      passwordErrField.innerText = passwordErrMsg.join(',')
+      emailErrField.innerText = emailErrMsg.join(',')
+
+
+      if (nameErrMsg.length === 0 && emailErrMsg.length == 0 && passwordErrMsg.length == 0 && confirmPasswordErrMsg.length == 0) {
+        form.submit();
+      }
+
+
+      console.log(name.value, email, password, confirmPassword);
+
+
+    })
+
+   
+  const message='<%=err?.message%>'
+    if(message){
+      Swal.fire({
+        icon: "error",
+        title: message,
+      });
+    }
+
+
+
+
+  </script>
+
+
+  <!-- registration Page -->
+
+
+
+
+
+  <%-include("footer")-%>

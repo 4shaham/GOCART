@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Boxicons -->
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- My CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <title>GOCART AdminHub</title>
+</head>
+
+<body>
+
+
+    <!-- SIDEBAR -->
+    <section id="sidebar">
+        <a href="#" class="brand">
+            <h2 class="text p-5" style="color: black;">GOCART</h2>
+        </a>
+        <ul class="side-menu top">
+            <li>
+                <a href="/admin/">
+                    <i class='bx bxs-dashboard'></i>
+                    <span class="text">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="/admin/productManagment?page=1">
+                    <!-- /admin/addproduct -->
+                    <i class='bx bxs-shopping-bag-alt'></i>
+                    <span class="text">ProductManagment</span>
+                </a>
+            </li>
+            <li>
+                <a href="/admin/UserManagment?page=1">
+                    <i class='bx bxs-doughnut-chart'></i>
+                    <span class="text">User managment</span>
+                </a>
+            </li>
+            <li class="active">
+                <a href="/admin/OrderManagment">
+                    <i class='bx bxs-group'></i>
+                    <span class="text">Order Managment</span>
+                </a>
+            </li>
+            <li>
+                <a href="/admin/cateogaryManagment?page=1">
+                    <i class='bx bxs-cog'></i>
+                    <span class="text"> Category Managment</span>
+                </a>
+            </li>
+            <li>
+                <a href="/admin/CoupenManagment">
+                    <!-- /admin/addproduct -->
+                    <i class='bx bxs-shopping-bag-alt'></i>
+                    <span class="text">Coupen Managment</span>
+                </a>
+            </li>
+            <li>
+                <a href="/admin/offermanagment">
+                    <!-- /admin/addproduct -->
+                    <i class='bx bxs-shopping-bag-alt'></i>
+                    <span class="text">Offer Managment</span>
+                </a>
+            </li>
+            <li >
+				<a href="/admin/referralOffer">
+					<!-- /admin/addproduct -->
+					<i class='bx bxs-shopping-bag-alt'></i>
+					<span class="text">Referral Managment</span>
+				</a>
+			</li>
+        </ul>
+        <ul class="side-menu">
+
+            <li>
+                <a href="#" class="logout">
+                    <i class='bx bxs-log-out-circle'></i>
+                    <span class="text">Logout</span>
+                </a>
+            </li>
+        </ul>
+    </section>
+    <!-- SIDEBAR -->
+
+
+
+    <!-- CONTENT -->
+    <section id="content">
+
+        <!-- MAIN -->
+        <main>
+            <div class="head-title">
+                <div class="left">
+                    <h1>Order Managment</h1>
+                    <!-- <ul class="breadcrumb">
+						<li>
+							<a href="#">Dashboard</a>
+						</li>
+						<li><i class='bx bx-chevron-right' ></i></li>
+						<li>
+							<a class="active" href="#">Home</a>
+						</li>
+					</ul> -->
+                </div>
+
+            </div>
+
+            
+
+            <div class="container " style="background-color: rgb(233, 230, 221);">
+                <!-- <div class="container-head p-2">
+                <button class="p-3 bg-black" style="border-radius: 10px;"><a class="text-white" href="/admin/addCateogaryManagment" >Add Cateogary</a></button>
+                <button class="p-3 bg-black" style="border-radius: 10px;"><a class="text-white" href="/admin/unlistCateogaryManagment" >Unlisted Cateogary</a></button>
+            </div> -->
+                <% for(let i=0;i<orders.length;i++) { %>
+                    <div class="container-body bg-white d-flex justify-content-between m-2 text-dark"
+                        style="border-radius: 20px;">
+
+                        <div class="product d-flex mt-3">
+                            <a href="/admin/ordersDetail?id=<%= orders[i]._id %>"><img
+                                    src="<%= orders[i]. orderItems.image[0]%>" alt="jsggs" style="width:150px"></a>
+
+                            <div class="product-body ">
+
+                                <h5>Status:<%= orders[i].orderItems.orderStatus %>
+                                </h5>
+                                <p></p>
+                                <p>Email:<span class="text-primary">
+                                        <%= orders[i].userDetails[0].email %>
+                                    </span><br>Name:<span class="text-primary">
+                                        <%= orders[i].userDetails[0].name %>
+                                    </span></p>
+
+
+                            </div>
+
+
+                        </div>
+                        <div class="product d-flex mt-4">
+
+                            <div class="product-body   ">
+                                <p>orderId:<%= orders[i]._id %>
+                                </p>
+                                <p>payment Method:<%= orders[i]. paymentMethod %>
+                                </p>
+                                <p>product name:<%= orders[i]. orderItems. pName%>
+                                </p>
+                                <p>quantity:<%= orders[i]. orderItems. quantity%>
+                                </p>
+                                <p> Price:₹ <span class="text-success">
+                                        <%= orders[i]. orderItems. quantity*orders[i]. orderItems.price %>
+                                    </span></p>
+                            </div>
+                        </div>
+                        <div class="product d-flex mt-4">
+
+                            <div class="product-body  m-2 ">
+
+                                <form action="/api/updateOrderStatus?id=<%= orders[i]. orderItems._id%>" method="post">
+                                    <label for="paymentMethod">change status:</label>
+                                    <select id="paymentMethod" name="status">
+                                        <option value="<%= orders[i]. orderItems.orderStatus%>" hidden></option>
+                                        <option value="pending">pending</option>
+                                        <option value="shipped">shipped</option>
+                                        <option value="delivered">delivered</option>
+                                        <option value="canceled">canceled</option>
+                                        <option value="ordered">ordered</option>
+                                    </select>
+
+                                    <!-- You can include a submit button if this dropdown is part of a form -->
+                                    <!-- <button class="btn  btn-danger" type="submit" data-toggle="modal"
+                                        data-target="#confirmationModal">save changes</button> -->
+                                    <input type="submit" value="submit">
+                                </form>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <% } %>
+
+            </div>
+        </main>
+
+    </section>
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+
+// function applyFilter(status) {
+//   console.log(status);
+
+//   $.ajax({
+//     url: `/admin/findOrdersAxios?status=${status}`,
+//     method: 'GET',
+//     success: function (data) {  
+//         console.log(data)
+        
+        
+//       // Handle the successful response data here
+//     },
+//     error: function (error) {
+//       console.error('Error:', error);
+//     }
+//   });
+
+//   console.log('jiiiiiiii');
+// }
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+
+</html>

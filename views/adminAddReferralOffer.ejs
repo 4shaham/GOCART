@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Boxicons -->
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- My CSS -->
+    <link rel="stylesheet" href="/css/AddProduct.css">
+    <title>GOCART AdminHub</title>
+</head>
+
+<body>
+
+
+    <!-- SIDEBAR -->
+    <section id="sidebar">
+        <a href="#" class="brand">
+            <h2 class="text p-5" style="color: black;">GOCART</h2>
+        </a>
+        <ul class="side-menu top">
+            <li>
+                <a href="/admin/">
+                    <i class='bx bxs-dashboard'></i>
+                    <span class="text">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="/admin/productManagment?page=1">
+                    <!-- /admin/addproduct -->
+                    <i class='bx bxs-shopping-bag-alt'></i>
+                    <span class="text">ProductManagment</span>
+                </a>
+            </li>
+            <li>
+                <a href="/admin/UserManagment?page=1">
+                    <i class='bx bxs-doughnut-chart'></i>
+                    <span class="text">User managment</span>
+                </a>
+            </li>
+            <li>
+                <a href="/admin/OrderManagment">
+                    <i class='bx bxs-group'></i>
+                    <span class="text">Order Managment</span>
+                </a>
+            </li>
+            <li>
+                <a href="/admin/CateogaryManagment?page=1">
+                    <i class='bx bxs-cog'></i>
+                    <span class="text">Cateogary Managmeny</span>
+                </a>
+            </li>
+            <li >
+                <a href="/admin/CoupenManagment">
+                    <!-- /admin/addproduct -->
+                    <i class='bx bxs-shopping-bag-alt'></i>
+                    <span class="text">Coupen Managment</span>
+                </a>
+            </li>
+            <li class="active">
+				<a href="/admin/referralOffer">
+					<!-- /admin/addproduct -->
+					<i class='bx bxs-shopping-bag-alt'></i>
+					<span class="text">Referral Managment</span>
+				</a>
+			</li>
+        </ul>
+        <ul class="side-menu">
+            <li>
+                <a href="" class="logout">
+                    <i class='bx bxs-log-out-circle'></i>
+                    <span class="text">Logout</span>
+                </a>
+            </li>
+        </ul>
+
+    </section>
+    <!-- SIDEBAR -->
+
+
+
+    <!-- CONTENT -->
+    <section id="content">
+
+        <!-- MAIN -->
+        <main>
+            <div class="head-title">
+                <div class="left">
+                    <h1>Add Referral Offer</h1>
+                    <!-- <ul class="breadcrumb">
+						<li>
+							<a href="#">Dashboard</a>
+						</li>
+						<li><i class='bx bx-chevron-right' ></i></li>
+						<li>
+							<a class="active" href="#">Home</a>
+						</li>
+					</ul> -->
+                </div>
+
+            </div>
+
+
+            <div class="container " style="background-color: rgb(233, 230, 221);">
+                <form action="/admin/addreferaloffer"  method="post"
+                    style="background-color: rgb(244, 240, 235);">
+                    <div class="container   " style="background-color: rgb(214, 212, 206);">
+
+
+                        <div class="input-box ">
+
+
+                            <div>
+                                <label for="discount">Referral Amount</label>
+                                <div>
+                                    <input type="text" name="referralAmount" id="referralAmount">
+                                    <p id="errorElement1" class="text-danger"></p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="input-box">
+
+
+                            <div>
+                                <label for="discount">Referred Amount</label>
+                                <div>
+                                    <input type="text" name="referredAmount" id="referredAmount">
+                                    <p id="errorElement2" class="text-danger"></p>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="input-box">
+
+
+                            <div>
+                                <label for="discount">Expired Date</label>
+                                <div>
+                                    <input type="datetime-local" name="expiredDate" id="Expire">
+                                    <p id="errorElement3" class="text-danger"></p>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+                        <div class="btn-container">
+                            <button class="btn" type="submit" id="btn">Submit</button>
+                        </div>
+
+                    </div>
+                </form>
+
+            </div>
+
+
+    </section>
+    <!-- CONTENT -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> -->
+
+    <!-- <script src="/js/adminCoupen.js"></script> -->
+    <script>
+
+        let btn = document.getElementById('btn')
+
+        btn.addEventListener('click', (e) => {
+
+            e.preventDefault()
+
+            let form = btn.form
+
+            let referralAmount = document.getElementById('referralAmount').value
+            let referredAmount = document.getElementById('referredAmount').value
+            let expireDate = document.getElementById('Expire').value
+
+
+
+            let referralAmountErr = []
+            let referredAmountErr = []
+            let expireDateErr = []
+
+
+            let errorElement1 = document.getElementById('errorElement1')
+            let errorElement2 = document.getElementById('errorElement2')
+            let errorElement3 = document.getElementById('errorElement3')
+
+            if (referralAmount.trim() == '') {
+
+                referralAmountErr.push('This field is required')
+
+            }
+
+            if (referredAmount.trim() == '') {
+
+                referredAmountErr.push('This field is required')
+
+            }
+            if (expireDate.trim() == '') {
+
+                expireDateErr.push('This field is required')
+
+            }
+
+            // var currentDate = new Date();
+
+            // console.log(currentDate);
+
+            //  if(expireDate>currentDate){
+            //     console.log('hiiiiiiiii');
+            //  }
+
+
+
+
+            if (referralAmountErr.length > 0) {
+
+                document.getElementById('referralAmount').classList.add('is-invalid')
+                document.getElementById('referralAmount').classList.remove('is-Valid')
+
+
+            } else {
+                document.getElementById('referralAmount').classList.add('is-Valid')
+                document.getElementById('referralAmount').classList.remove('is-invalid')
+            }
+
+
+
+            errorElement1.innerText = referralAmountErr.join('.')
+            errorElement2.innerText = referredAmountErr.join('.')
+            errorElement3.innerText = expireDateErr.join('.')
+
+
+
+            console.log(referralAmount, referredAmount, expireDate);
+
+            if (referralAmountErr.length === 0 && referredAmountErr.length == 0 && expireDateErr.length == 0) {
+                form.submit();
+            }
+
+        })
+
+    </script>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+
+</html>

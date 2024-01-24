@@ -1,0 +1,29 @@
+
+
+/* header */
+
+.gocarthead{
+    margin-left: 40px;
+    margin-top: 10px;
+ }
+ .icons{
+     display: flex;
+     margin-right: 50px;
+ }
+ .hi{
+     margin-left: 10px;
+     color: aliceblue;
+ 
+ }
+ 
+ @media screen and (max-width: 600px) {
+    .gocarthead {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #id  {
+        width:150px;
+    }
+}

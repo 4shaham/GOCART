@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Boxicons -->
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- My CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <title>GOCART AdminHub</title>
+</head>
+
+<body>
+
+
+    <!-- SIDEBAR -->
+    <section id="sidebar">
+        <a href="#" class="brand">
+            <h2 class="text p-5" style="color: black;">GOCART</h2>
+        </a>
+        <ul class="side-menu top">
+            <li>
+                <a href="/admin/">
+                    <i class='bx bxs-dashboard'></i>
+                    <span class="text">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="/admin/productManagment?page=1">
+                    <!-- /admin/addproduct -->
+                    <i class='bx bxs-shopping-bag-alt'></i>
+                    <span class="text">ProductManagment</span>
+                </a>
+            </li>
+            <li>
+                <a href="/admin/UserManagment?page=1">
+                    <i class='bx bxs-doughnut-chart'></i>
+                    <span class="text">User managment</span>
+                </a>
+            </li>
+            <li>
+                <a href="/admin/OrderManagment">
+                    <i class='bx bxs-group'></i>
+                    <span class="text">Order Managment</span>
+                </a>
+            </li>
+            <li>
+                <a href="/admin/cateogaryManagment?page=1">
+                    <i class='bx bxs-cog'></i>
+                    <span class="text"> Cateogary Managment</span>
+                </a>
+            </li>
+            <li>
+                <a href="/admin/CoupenManagment">
+                    <!-- /admin/addproduct -->
+                    <i class='bx bxs-shopping-bag-alt'></i>
+                    <span class="text">Coupen Managment</span>
+                </a>
+            </li>
+            <li>
+                <a href="/admin/offermanagment">
+                    <!-- /admin/addproduct -->
+                    <i class='bx bxs-shopping-bag-alt'></i>
+                    <span class="text">Offer Managment</span>
+                </a>
+            </li>
+            <li class="active">
+                <a href="/admin/referralOffer">
+                    <!-- /admin/addproduct -->
+                    <i class='bx bxs-shopping-bag-alt'></i>
+                    <span class="text">Referral Managment</span>
+                </a>
+            </li>
+        </ul>
+        <ul class="side-menu">
+
+            <li>
+                <a href="#" class="logout">
+                    <i class='bx bxs-log-out-circle'></i>
+                    <span class="text">Logout</span>
+                </a>
+            </li>
+        </ul>
+
+    </section>
+    <!-- SIDEBAR -->
+
+
+
+    <!-- CONTENT -->
+    <section id="content">
+
+        <!-- MAIN -->
+        <main>
+            <div class="head-title">
+                <div class="left">
+                    <h1>Refferal Managment</h1>
+                    <!-- <ul class="breadcrumb">
+						<li>
+							<a href="#">Dashboard</a>
+						</li>
+						<li><i class='bx bx-chevron-right' ></i></li>
+						<li>
+							<a class="active" href="#">Home</a>
+						</li>
+					</ul> -->
+                </div>
+
+            </div>
+
+            <div class="container " style="background-color: rgb(233, 230, 221);">
+                <% if(data.length==0){ %>
+                    <a href="/admin/addReferralOffer"><button class="btn btn-black">
+                            <h5>Add Referral Offer</h5>
+                        </button></a>
+                    <% } %>
+
+                        <% if(data[0]) {%>
+
+
+                            <div class="container-body bg-white d-flex justify-content-between m-2 text-dark"
+                                style="border-radius: 20px; height: 70px;">
+
+                                <div class="product d-flex">
+
+                                    <div class="product-body m-3 ">
+                                        <p>Expire Date:<%=data[0].expiredate.split('T')[0] %>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="product-body m-3 text">
+                                    <h5>Refferal Offer Amount:<%=data[0].referralRewards %>
+                                    </h5>
+                                </div>
+                                <div class="product-body m-3 text">
+                                    <h5>Reffered Offer Amount:<%=data[0].referralUserRewards %>
+                                    </h5>
+                                </div>
+                                <div class="product-body m-3">
+
+
+                                    <button class="btn btn-danger"
+                                        onclick="ReferralDelete('<%= data[0]._id %>'     )">Delete</button>
+
+
+                                </div>
+                            </div>
+
+                            <% } %>
+
+            </div>
+
+
+    </section>
+    <nav aria-label="Page navigation example">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <!-- CONTENT -->
+        <script>
+
+            // function ReferralDelete(id) {
+            //     console.log('shaham', id);
+            //     const swalWithBootstrapButtons = Swal.mixin({
+            //         customClass: {
+            //             confirmButton: "btn btn-success",
+            //             cancelButton: "btn btn-danger"
+            //         },
+            //         buttonsStyling: false
+            //     });
+            //     swalWithBootstrapButtons.fire({
+            //         title: "Are you sure?",
+            //         text: "You won't be able to revert this!",
+            //         icon: "warning",
+            //         showCancelButton: true,
+            //         confirmButtonText: "Yes, delete it!",
+            //         cancelButtonText: "No, cancel!",
+            //         reverseButtons: true
+            //     }).then((result) => {
+            //         if (result.isConfirmed) {
+            //             swalWithBootstrapButtons.fire({
+            //                 title: "Deleted!",
+            //                 text: "Your file has been deleted.",
+            //                 icon: "success"
+            //             });
+            //         } else if (
+            //             /* Read more about handling dismissals below */
+            //             result.dismiss === Swal.DismissReason.cancel
+            //         ) {
+            //             swalWithBootstrapButtons.fire({
+            //                 title: "Cancelled",
+            //                 text: "Your imaginary file is safe :)",
+            //                 icon: "error"
+            //             });
+            //         }
+            //     });
+
+
+
+            //     $.ajax({
+            //         url: `/admin/deleteReferralOffer?id=${id}`,
+            //         type: 'DELETE',
+            //         success: function (result) {
+            //             console.log('Successfully deleted:', result);
+            //             window.location.href = result.url
+            //         },
+            //         error: function (error) {
+            //             console.error('Error deleting:', error);
+            //             // Handle error scenarios here
+            //         }
+            //     });
+            // }
+            function ReferralDelete(id) {
+    console.log('shaham', id);
+
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+            confirmButton: "btn btn-success",
+            cancelButton: "btn btn-danger"
+        },
+        buttonsStyling: false
+    });
+
+    swalWithBootstrapButtons.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, cancel!",
+        reverseButtons: true
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // User clicked "Yes, delete it!"
+            $.ajax({
+                url: `/admin/deleteReferralOffer?id=${id}`,
+                type: 'DELETE',
+                success: function (result) {
+                    console.log('Successfully deleted:', result);
+                    // Show success message
+                    swalWithBootstrapButtons.fire({
+                        title: "Deleted!",
+                        text: "Your file has been deleted.",
+                        icon: "success"
+                    }).then(() => {
+                        // Redirect to the specified URL after success
+                        window.location.href = result.url;
+                    });
+                },
+                error: function (error) {
+                    console.error('Error deleting:', error);
+                    // Handle error scenarios here
+                    swalWithBootstrapButtons.fire({
+                        title: "Error",
+                        text: "There was an error deleting the item.",
+                        icon: "error"
+                    });
+                }
+            });
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+            // User clicked "No, cancel!" or closed the dialog
+            swalWithBootstrapButtons.fire({
+                title: "Cancelled",
+                text: "Your imaginary file is safe :)",
+                icon: "error"
+            });
+        }
+    });
+}
+
+        </script>
+
+        <script src="script.js"></script>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+
+</html>

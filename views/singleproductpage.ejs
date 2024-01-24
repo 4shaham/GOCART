@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="icon"
+    href="data:image/jpeg;base64,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"
+    type="image/gif" sizes="16x16">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+  <!-- MDB -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.css" rel="stylesheet" />
+
+  <style>
+    .icon-hover:hover {
+      border-color: #3b71ca !important;
+      background-color: white !important;
+      color: #3b71ca !important;
+    }
+
+    .icon-hover:hover i {
+      color: #b3b5b9 !important;
+    }
+
+   
+  </style>
+</head>
+
+<body class="bg-black text-white">
+  <header>
+    <!-- header -->
+
+    <div class="navigation-bar">
+      <div class="container-fluid">
+        <div class="d-flex flew-wrap align-items-center justify-content-md-between p-1 ">
+          <div class="col d-flex align-items-center col-md-auto pt-2 text-white">
+            <!-- <div><svg style="height:24px; flex-shrink:0" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" class="style-scope yt-icon" style="pointer-events: none; display: block; width: 100%; height: 100%;"><g class="style-scope yt-icon"><path d="M21,6H3V5h18V6z M21,11H3v1h18V11z M21,17H3v1h18V17z" class="style-scope yt-icon"></path></g></svg></div> -->
+            <a href="/">
+              <h1 class="gocarthead text-white">GO <br>CART<br></h1>
+            </a>
+          </div>
+          <div class="col col-md-6 col-lg-5  d-md-flex align-items-center justify-content-center">
+            <div class="input-group flex-nowrap col-10" style="width: 90%;">
+              <input type="text" class="form-control rounded-10" placeholder="Search">
+              <button class="input-group-text px-3 rounded-10" style="background-color:yellow;">
+                <svg style="height:24px; flex-shrink:0" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet"
+                  focusable="false" class="style-scope yt-icon"
+                  style="pointer-events: none; display: block; width: 100%; height: 100%;">
+                  <g class="style-scope yt-icon">
+                    <path
+                      d="M20.87,20.17l-5.59-5.59C16.35,13.35,17,11.75,17,10c0-3.87-3.13-7-7-7s-7,3.13-7,7s3.13,7,7,7c1.75,0,3.35-0.65,4.58-1.71 l5.59,5.59L20.87,20.17z M10,16c-3.31,0-6-2.69-6-6s2.69-6,6-6s6,2.69,6,6S13.31,16,10,16z"
+                      class="style-scope yt-icon"></path>
+                  </g>
+                </svg>
+              </button>
+            </div>
+            <!-- <div class="ms-2">
+                    <svg  style="height:24px; flex-shrink:0" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" class="style-scope yt-icon" style="pointer-events: none; display: block; width: 100%; height: 100%;"><g class="style-scope yt-icon"><path d="M12 3C10.34 3 9 4.37 9 6.07V11.93C9 13.63 10.34 15 12 15C13.66 15 15 13.63 15 11.93V6.07C15 4.37 13.66 3 12 3ZM18.5 12H17.5C17.5 15.03 15.03 17.5 12 17.5C8.97 17.5 6.5 15.03 6.5 12H5.5C5.5 15.24 7.89 17.93 11 18.41V21H13V18.41C16.11 17.93 18.5 15.24 18.5 12Z" class="style-scope yt-icon"></path></g></svg>
+                  </div> -->
+          </div>
+          <ul class="nav col-md-auto">
+            <li>
+              <a href="#" class="nav-link px-2">
+                <i class="bi bi-person-fill text-white"></i> </a>
+            </li>
+            <li>
+              <a href="#" class="nav-link px-2">
+                <i class="bi bi-bag-fill text-white"></i> </a>
+            </li>
+            <li>
+              <a href="#" class="nav-link px-2">
+                <i class="bi bi-heart-fill text-white"></i> </a>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- header -->
+
+
+  </header>
+
+  <!-- content -->
+  <section class="py-5">
+    <div class="container">
+      <div class="row gx-5">
+        <% for(let i=0;i<product.length;i++) { %>
+          <aside class="col-lg-6">
+            <div class="  border rounded-4 mb-3 d-flex justify-content-center text-center">
+              <a data-fslightbox="mygallery" class="rounded-4" data-type="image" href="">
+                <img style="max-width:750px; max-height:70vh; margin: auto;" id="main-image" class="rounded-4 fit"
+                  src="<%= product[i].image[0]%>" />
+              </a>
+            </div>
+            <div class="d-flex justify-content-center mb-3">
+              <% for (let n = 0; n < product[i].image.length; n++) { %>
+                <a data-fslightbox="mygallery" class="border mx-1 rounded-2 thumbnail-link" data-type="image" href=""
+                  class="item-thumb">
+                  <img width="100px" height="100px" class="small-img rounded-2"
+                    src="<%= product[i].image[n]%>" data-zoom-image="<%= product[i].image[n]%>" />
+                </a>
+              <% } %>
+            </div>
+            <!-- thumbs-wrap.// -->
+            <!-- gallery-wrap .end// -->
+          </aside>
+          <main class="col-lg-6">
+            <div class="ps-lg-3">
+              <h4 class="title text-white">
+                <%= product[i].pname %>
+              </h4>
+              <div class="d-flex flex-row my-3">
+                <!-- <div class="text-warning mb-1 me-2">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                    <span class="ms-1">
+                      4.5
+                    </span>
+                  </div> -->
+
+                <span class="text-success ms-2">
+                  stock:
+                  <% if (product[i].instock===0) { %>
+                    <p class="text-danger"> Out of Stock</p>
+                    <% } else { %>
+                      <%= product[i].instock %>
+                        <% } %>
+                </span>
+              </div>
+
+              <div class="mb-3">
+                <span class="text-muted">MRP:<%= product[i]. firstprice %><br></span>
+                <span class="p">Discount:<%= product[i].discount %><br></span>
+                <span class="h5">Last Price:<%= product[i].lastprice %></span>
+              </div>
+
+              <p>
+                <%= product[i].description %>
+              </p>
+
+              <div class="row">
+                <dt class="col-3">Category:</dt>
+                <dd class="col-9">
+                  <%= product[i].cateogary %>
+                </dd>
+
+                <dt class="col-3">Color</dt>
+                <dd class="col-9">
+                  <%= product[i].color %>
+                </dd>
+
+                <!-- <dt class="col-3">Material</dt>
+                  <dd class="col-9">Cotton, Jeans</dd> -->
+
+                <dt class="col-3">Brand</dt>
+                <dd class="col-9">
+                  <%= product[i].bname %>
+                </dd>
+              </div>
+
+              <hr />
+
+              <div class="row mb-4">
+                <!-- <div class="col-md-4 col-6">
+                    <label class="mb-2">Size</label>
+                    <select class="form-select border border-secondary" style="height: 35px;">
+                      <option>Small</option>
+                      <option>Medium</option>
+                      <option>Large</option>
+                    </select>
+                  </div> -->
+                <!-- col.// -->
+
+              </div>
+              <a href="/buyNowPage?id=<%= product[i]._id %>" class="btn btn-warning shadow-0"> Buy now </a>
+              <% if(product[i].instock==0) { %>
+                <a href="" class="btn btn-danger shadow-0">out of stock</a>
+                <% } else if(isCart==null) { %>
+                  <a href="/api/addtocart?id=<%= product[i]._id %>" class="btn btn-primary shadow-0"> <i
+                      class="me-1 fa fa-shopping-basket"></i> Add to cart </a>
+                  <% } else { %>
+                    <a href="/cart" class="btn btn-primary shadow-0"> <i class="me-1 fa fa-shopping-basket"></i> Go cart
+                    </a>
+                    <% } %>
+                      <a href="#" class="btn btn-light border border-secondary py-2 icon-hover px-3"> <i
+                          class="me-1 fa fa-heart fa-lg"></i> Save </a>
+            </div>
+          </main>
+          <% } %>
+      </div>
+    </div>
+  </section>
+  <!-- content -->
+
+  <!-- Footer -->
+  <div class="container-fluid  py-5 text-white" style="background-color: rgba(24, 23, 23, 0.584);">
+    <div class="row">
+      <div class="col-xsm-12 col-sm-3 text-white text-center">
+        <h1 class=" mt-5" style="margin-top:50px;">GO <br>CART<br></h1>
+      </div>
+      <div class="col-xsm-12 col-sm-3 text-center ">
+        <h4 style="color: bisque;">Customer Services</h4>
+        <i class="bi bi-whatsapp " style="color: green; ">9895948261</i>
+        <p><i class="bi bi-envelope"></i>GoCart@gmail.com</p>
+      </div>
+      <div class="col-xsm-12 col-sm-3 ">
+        <div class="text-center">
+          <h4 style="color: bisque;">Product Help</h4>
+          <p><a href="" style="text-decoration: none; color: aliceblue;">Return pollicy</a></p>
+          <p><a href="" style="text-decoration: none; color: aliceblue;">Shipping and delivery</a></p>
+        </div>
+      </div>
+      <div class="col-xsm-12 col-sm-3 d-flex ">
+        <div>
+          <i class="bi bi-facebook margin margin-5px" style="margin: 5px;"> </i>
+        </div>
+        <div>
+          <i class="bi bi-instagram " style="margin: 5px;"></i>
+        </div>
+        <div>
+          <i class="bi bi-twitter " style="margin: 5px;"></i>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  </div>
+  <!-- Footer -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/elevatezoom/3.0.8/jquery.elevatezoom.min.css" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/elevatezoom/3.0.8/jquery.elevatezoom.min.js"></script>
+
+
+  <script>
+
+
+    // document.addEventListener("DOMContentLoaded", function () {
+    //     // Get the quantity input element and buttons
+    //     var quantityInput = document.getElementById("quantityInput");
+    //     var decrementButton = document.getElementById("decrementButton");
+    //     var incrementButton = document.getElementById("incrementButton");
+    //     quantityInput.value = 0;
+
+    //     // Add click event listener for decrement button
+    //     decrementButton.addEventListener("click", function () {
+    //         decrementQuantity();
+    //     });
+
+    //     // Add click event listener for increment button
+    //     incrementButton.addEventListener("click", function () {
+    //         incrementQuantity();
+    //     });
+
+    //     // Function to decrement quantity
+    //     function decrementQuantity() {
+    //         var currentQuantity = parseInt(quantityInput.value);
+    //         if (currentQuantity > 0) {
+    //             quantityInput.value = currentQuantity - 1;
+    //         }
+    //     }
+
+    //     // Function to increment quantity
+    //     function incrementQuantity() {
+    //         var currentQuantity = parseInt(quantityInput.value);
+    //         quantityInput.value = currentQuantity + 1;
+    //     }
+    // });
+
+    $(document).ready(function () {
+    $('.thumbnail-link').on('click', function (e) {
+      e.preventDefault();
+      var zoomedImage = $(this).find('img').attr('data-zoom-image');
+      $('#main-image').attr('src', zoomedImage).data('zoom-image', zoomedImage);
+      $('.zoomContainer').remove(); // Remove previous zoom container if any
+      $('#main-image').elevateZoom({
+        zoomType: "inner",
+        cursor: "crosshair",
+      });
+    });
+  });
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+      var bigimage = document.getElementById('main-image')
+      var smallimage = document.getElementsByClassName('small-img')
+
+
+      smallimage[0].onclick = (e) => {
+        e.preventDefault()
+        console.log(e)
+        bigimage.src = smallimage[0].src
+      }
+      smallimage[1].onclick = (e) => {
+        e.preventDefault()
+        bigimage.src = smallimage[1].src
+      }
+      smallimage[2].onclick = (e) => {
+        e.preventDefault()
+        bigimage.src = smallimage[2].src
+      }
+      smallimage[3].onclick = (e) => {
+        e.preventDefault()
+        bigimage.src = smallimage[3].src
+      }
+
+
+
+
+
+    })
+  </script>
+
+  <!-- Footer -->
+
+
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>
+</body>
+
+</html>

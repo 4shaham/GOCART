@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Boxicons -->
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- My CSS -->
+    <link rel="stylesheet" href="/css/AddProduct.css">
+    <title>GOCART AdminHub</title>
+</head>
+
+<body>
+
+
+    <!-- SIDEBAR -->
+    <section id="sidebar">
+        <a href="#" class="brand">
+            <h2 class="text p-5" style="color: black;">GOCART</h2>
+        </a>
+        <ul class="side-menu top">
+            <li class="active">
+                <a href="/admin/">
+                    <i class='bx bxs-dashboard'></i>
+                    <span class="text">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="/admin/productManagment?page=1">
+                    <!-- /admin/addproduct -->
+                    <i class='bx bxs-shopping-bag-alt'></i>
+                    <span class="text">ProductManagment</span>
+                </a>
+            </li>
+            <li>
+                <a href="/admin/UserManagment?page=1">
+                    <i class='bx bxs-doughnut-chart'></i>
+                    <span class="text">User managment</span>
+                </a>
+            </li>
+            <li>
+                <a href="/admin/OrderManagment">
+                    <i class='bx bxs-group'></i>
+                    <span class="text">Order Managment</span>
+                </a>
+            </li>
+            <li>
+                <a href="/admin/CateogaryManagment?page=1">
+                    <i class='bx bxs-cog'></i>
+                    <span class="text">Cateogary Managmeny</span>
+                </a>
+            </li>
+            <li>
+                <a href="/admin/CoupenManagment">
+                    <!-- /admin/addproduct -->
+                    <i class='bx bxs-shopping-bag-alt'></i>
+                    <span class="text">Coupen Managment</span>
+                </a>
+            </li>
+            <li>
+                <a href="/admin/offermanagment">
+                    <!-- /admin/addproduct -->
+                    <i class='bx bxs-shopping-bag-alt'></i>
+                    <span class="text">Offer Managment</span>
+                </a>
+            </li>
+            <li >
+				<a href="/admin/referralOffer">
+					<!-- /admin/addproduct -->
+					<i class='bx bxs-shopping-bag-alt'></i>
+					<span class="text">Referral Managment</span>
+				</a>
+			</li>
+        </ul>
+        <ul class="side-menu">
+            <li>
+                <a href="" class="logout">
+                    <i class='bx bxs-log-out-circle'></i>
+                    <span class="text">Logout</span>
+                </a>
+            </li>
+        </ul>
+
+    </section>
+    <!-- SIDEBAR -->
+
+
+
+    <!-- CONTENT -->
+    <section id="content">
+
+        <!-- MAIN -->
+        <main>
+            <div class="head-title">
+                <div class="left">
+                    <h1>Add product</h1>
+                    <!-- <ul class="breadcrumb">
+						<li>
+							<a href="#">Dashboard</a>
+						</li>
+						<li><i class='bx bx-chevron-right' ></i></li>
+						<li>
+							<a class="active" href="#">Home</a>
+						</li>
+					</ul> -->
+                </div>
+
+            </div>
+
+
+            <div class="container " style="background-color: rgb(233, 230, 221);">
+                <!-- <div class="container-head p-2 text-end">
+                    <a href="">Add Product</a>
+                </div> -->
+                <form action="/admin/addproduct" method="POST" enctype="multipart/form-data"
+                    style="background-color: antiquewhite;">
+                    <div class="container " style="background-color: rgb(110, 107, 99);">
+                        <div class="input-box">
+                            <div>
+                                <label for="pName">Product Name</label>
+                                <div>
+                                    <input type="text" name="pname" id="pName">
+                                    <p id="errorElement1" class="text-danger "></p>
+                                    
+                                </div>
+
+                            </div>
+
+                            <div>
+                                <label for="bName">Brand Name</label>
+                                <div>
+                                    <input type="text" name="bname" id="bName">
+                                    <p id="errorElement2" class="text-danger"></p>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="category">Category</label>
+                                <div>
+                                    <select name="category" id="category ">
+                                        <% for(let i=0;i<Cateogary.length;i++) {%>
+                                            <option value="<%= Cateogary[i].categary %>">
+                                                <%=Cateogary[i].categary %>
+                                            </option>
+                                            <% } %>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="input-box">
+                            <div>
+                                <label for="subTitle">SubTitle</label>
+                                <div>
+                                    <input type="text" name="subtitle" id="subTitle">
+                                    <p id="errorElement3" class="text-danger"></p>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="descrption-head">Description Heading</label>
+                                <div>
+                                    <input type="text" name="descriptionheading" id="dHeading">
+                                    <p id="errorElement4" class="text-danger"></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="input-box">
+                            <div>
+                                <label for="description">Description</label>
+                                <textarea name="description" rows="5" cols="50" class="description" id="Des"
+                                    required></textarea>
+                                <p id="errorElement5" class="text-danger"></p>
+                            </div>
+                        </div>
+
+                        <div class="input-box">
+                            <div>
+                                <label for="firstPrice">First Price</label>
+                                <div>
+                                    <input type="number" name="firstprice" id="firstprice">
+                                    <p id="errorElement6" class="text-danger"></p>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="lastPrice">Last Price</label>
+                                <!-- <input type="number" name="lastprice" onkeyup="" required> -->
+                                <div>
+                                    <input type="number" name="lastprice" id="lastprice" onkeyup="calculateDiscount()">
+                                    <p id="errorElement7" class="text-danger"></p>
+                                </div>
+
+                            </div>
+
+                            <div>
+                                <label for="discount">Discount(%)</label>
+                                <div>
+                                    <input type="number" name="discount" id="discount" readonly>
+                                    <p id="errorElement8" class="text-danger"></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="input-box">
+                            <div>
+                                <label for="colour">Colour</label>
+                                <div>
+                                    <input type="text" name="color" id="color">
+                                    <p id="errorElement9" class="text-danger"></p>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="inStock">In Stock</label>
+                                <div>
+                                    <input type="number" name="instock" id="iStock">
+                                    <p id="errorElement10" class="text-danger"></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="input-box">
+                            <div>
+                                <label for="image">Image</label>
+                                <div>
+                                    <input type="file" name="image" id="img" required multiple>
+                                    <p id="errorElement11" class="text-danger"></p>
+                                </div>
+                            </div>
+
+                            <!-- <div>
+                                <input type="radio" name="new" value="1">
+                                <label for="new">Newly launched</label>
+                            </div> -->
+                        </div>
+
+                        <div class="btn-container">
+                            <button class="btn" id="btn">Submit</button>
+                        </div>
+
+                    </div>
+                </form>
+
+            </div>
+
+
+    </section>
+    <!-- CONTENT -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
+    <!-- <script src="/js/validationAddProduct.js" ></script> -->
+    <script>
+
+
+        function calculateDiscount() {
+
+
+            var lastPriceInput = document.getElementById('lastprice').value;
+            var firstPriceInput = document.getElementById('firstprice').value;
+
+
+
+
+
+            var lastPrice = parseFloat(lastPriceInput);
+            var firstPrice = parseFloat(firstPriceInput);
+
+
+
+
+
+
+            if (!isNaN(lastPrice) && !isNaN(firstPrice)) {
+                // Calculate the discounted price
+
+                var discountPercentage = ((firstPrice - lastPrice) / firstPrice) * 100;
+                console.log(discountPercentage);
+
+
+                document.getElementById('discount').value = parseInt(discountPercentage);
+
+
+
+
+                // Update the discount input field with the calculated discounted price
+
+            }
+
+        }
+
+
+
+        var btn = document.getElementById('btn')
+        console.log(btn);
+
+
+
+
+        btn.addEventListener('click', (event) => {
+            event.preventDefault()
+
+         var form=btn.form
+            const productName = document.getElementById('pName').value;
+            const brandName = document.getElementById('bName').value;
+            const subTitle = document.getElementById('subTitle').value;
+            const descriptionHeading = document.getElementById('dHeading').value;
+            const description = document.getElementById('Des').value;
+            const firstPrice = document.getElementById('firstprice').value;
+            const lastPrice = document.getElementById('lastprice').value;
+            const discount = document.getElementById('discount').value;
+            const color = document.getElementById('color').value;
+            const inStock = document.getElementById('iStock').value;
+            const image = document.getElementById('img').value;
+
+            console.log('tjk', productName);
+
+
+            let productErr = []
+            let brandErr = []
+            let subTitleErr = []
+            let descriptionHeadingErr = []
+            let descriptionErr = []
+            let firstPriceErr = []
+            let lastPriceErr = []
+            let discountErr = []
+            let colorErr = []
+            let inStockErr = []
+            let imageErr = []
+
+
+            const errorElement1 = document.getElementById('errorElement1');
+            const errorElement2 = document.getElementById('errorElement2');
+            const errorElement3 = document.getElementById('errorElement3');
+            const errorElement4 = document.getElementById('errorElement4');
+            const errorElement5 = document.getElementById('errorElement5');
+            const errorElement6 = document.getElementById('errorElement6');
+            const errorElement7 = document.getElementById('errorElement7');
+            const errorElement8 = document.getElementById('errorElement8');
+            const errorElement9 = document.getElementById('errorElement9');
+            const errorElement10 = document.getElementById('errorElement10');
+            const errorElement11 = document.getElementById('errorElement11');
+
+            if (productName.trim() === '') {
+                productErr.push('This field is required')
+            }
+
+            if (brandName.trim() === '') {
+
+                brandErr.push('This field is required')
+
+            }
+
+
+            if (subTitle.trim() === '') {
+
+                subTitleErr.push('This field is required')
+
+            }
+
+            if (descriptionHeading.trim() === '') {
+
+                descriptionHeadingErr.push('This field is required')
+
+            }
+            if (description.trim() === '') {
+
+
+                descriptionErr.push('This field is required')
+
+
+            }
+            if (firstPrice.trim() === '') {
+
+                firstPriceErr.push('This field is required')
+
+
+            }
+            if (lastPrice.trim() === '') {
+
+                lastPriceErr.push('This field is required')
+
+            }
+
+            if (discount.trim() === '') {
+
+                discountErr.push('This field is required')
+
+            }
+
+            if (inStock.trim() == '') {
+
+                inStockErr.push('This field is required')
+
+            }
+
+            if (color.trim() == '') {
+
+                colorErr.push('This field is required')
+
+            }
+
+            if (image.trim() == '') {
+                imageErr.push('This field is required')
+            }
+
+
+
+            if (firstPrice < 1 && firstPriceErr.length == 0) {
+
+
+                firstPriceErr.push('The first price must be greater than 0')
+
+            }
+
+            if (lastPrice < 1 && lastPriceErr.length == 0) {
+
+
+                lastPriceErr.push('The first price must be greater than 0')
+
+            }
+
+            if(inStock<1&&inStockErr.length==0){
+                inStockErr.push('The stock must be greater than 0')
+            }
+
+
+
+            if (productErr.length > 0) {
+
+
+                document.getElementById('pName').classList.add('is-invalid')
+                document.getElementById('pName').classList.remove('is-valid')
+            } else {
+                document.getElementById('pName').classList.remove('is-invalid')
+                document.getElementById('pName').classList.add('is-valid')
+            }
+
+            if (brandErr.length > 0) {
+                document.getElementById('bName').classList.add('is-invalid')
+                document.getElementById('bName').classList.remove('is-valid')
+            } else {
+                document.getElementById('bName').classList.remove('is-invalid')
+                document.getElementById('bName').classList.add('is-valid')
+            }
+
+
+
+
+
+
+            errorElement1.innerText = productErr.join('.')
+            errorElement2.innerText = brandErr.join('.')
+            errorElement3.innerText = subTitleErr.join('.')
+            errorElement4.innerText = descriptionHeadingErr.join('.')
+            errorElement5.innerText = descriptionErr.join('.')
+            errorElement6.innerText = firstPriceErr.join('.')
+            errorElement7.innerText = lastPriceErr.join('.')
+            errorElement8.innerText = discountErr.join('.')
+            errorElement9.innerText = colorErr.join('.')
+            errorElement10.innerText =  inStockErr.join('.')
+            errorElement11.innerText = imageErr.join('.')
+
+            if (productErr.length === 0 && brandErr.length == 0 && subTitleErr.length == 0 && descriptionHeadingErr.length == 0  && descriptionErr.length == 0 
+            && firstPriceErr.length == 0 && lastPriceErr.length == 0  && discountErr.length == 0 && colorErr.length == 0 && inStockErr.length == 0 && imageErr.length == 0 
+            ) {
+                form.submit();
+            }
+            
+
+        })
+
+
+    </script>
+</body>
+
+</html>

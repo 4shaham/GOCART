@@ -1,0 +1,39 @@
+
+.gocarthead{
+    margin-left: 40px;
+    margin-top: 10px;
+ }
+ .icons{
+     display: flex;
+     margin-right: 50px;
+ }
+ .hi{
+     margin-left: 10px;
+     color: aliceblue;
+ 
+ }
+
+ 
+ /* login page */
+ 
+ .sh{
+     color: aqua;
+ }
+ .lh{
+     border-width: 5cm;
+     border-color: aqua;
+ 
+ }
+ .register{
+     color: rgb(255, 0, 0);
+ }
+ .sh{
+    border-color: red;
+    border-style: solid;
+ }
+
+ .sha{
+    border-width:2px;
+    border-style:  solid;
+    border-color: red;
+ }

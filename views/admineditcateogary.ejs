@@ -1,0 +1,171 @@
+
+
+
+
+
+    
+  <!DOCTYPE html> 
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+      <!-- Boxicons -->
+      <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">    
+       <!-- My CSS -->
+       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+      <link rel="stylesheet" href="/css/AddProduct.css">
+      <title>GOCART AdminHub</title>
+  </head>
+  <body>
+
+
+    <!-- SIDEBAR -->
+    <section id="sidebar">
+		<a href="#" class="brand">
+			<h2 class="text p-5" style="color: black;">GOCART</h2>
+		</a>
+		<ul class="side-menu top">
+			<li class="active">
+				<a href="/admin/">
+					<i class='bx bxs-dashboard' ></i>
+					<span class="text">Dashboard</span>
+				</a>
+			</li>
+			<li>
+				<a href="/admin/productManagment?page=1">
+					<!-- /admin/addproduct -->
+					<i class='bx bxs-shopping-bag-alt' ></i>
+					<span class="text">ProductManagment</span>
+				</a>
+			</li>
+			<li>
+				<a href="/admin/UserManagment?page=1">
+					<i class='bx bxs-doughnut-chart' ></i>
+					<span class="text">User managment</span>
+				</a>
+			</li>
+			<li>
+				<a href="/admin/OrderManagment">
+					<i class='bx bxs-group' ></i>
+					<span class="text">Order Managment</span>
+				</a>
+			</li>
+            <li>
+				<a href="/admin/CateogaryManagment?page=1">
+					<i class='bx bxs-cog' ></i>
+					<span class="text">Cateogary Managmeny</span>
+				</a>
+			</li>
+            <li>
+                <a href="/admin/CoupenManagment">
+                    <i class='bx bxs-shopping-bag-alt' ></i>
+                    <span class="text">Coupen Managment</span>
+                </a>
+            </li>
+            <li >
+				<a href="/admin/referralOffer">
+					<!-- /admin/addproduct -->
+					<i class='bx bxs-shopping-bag-alt'></i>
+					<span class="text">Referral Managment</span>
+				</a>
+			</li>
+		</ul>
+		<ul class="side-menu">
+			<li>
+				<a href="" class="logout">
+					<i class='bx bxs-log-out-circle' ></i>
+					<span class="text">Logout</span>
+				</a>
+			</li>
+		</ul>
+		
+	</section>
+    <!-- SIDEBAR -->
+
+
+
+    <!-- CONTENT -->
+    <section id="content">
+
+        <!-- MAIN -->
+        <main>
+            <div class="head-title">
+                <div class="left">
+                    <h1>Add Categories</h1>
+                    <!-- <ul class="breadcrumb">
+						<li>
+							<a href="#">Dashboard</a>
+						</li>
+						<li><i class='bx bx-chevron-right' ></i></li>
+						<li>
+							<a class="active" href="#">Home</a>
+						</li>
+					</ul> -->
+                </div>
+
+            </div>
+
+
+            <div class="container " style="background-color: rgb(233, 230, 221);">
+                <form action="/admin/editCateogary?id=<%=Cateogary._id %>" method="POST" enctype="multipart/form-data" style="background-color: rgb(244, 240, 235);">
+                    <div class="container " style="background-color: rgb(214, 212, 206);">
+                     <div class="input-box">
+        
+                        <div class="input-box">
+                            
+        
+                            <div>
+                                <label for="discount">Category</label>
+                                <input type="text" name="Category" value="<%=Cateogary.categary %>" required>
+                                
+
+                            </div>
+                        </div>
+                      
+        
+                        <div class="input-box">
+                            <div>
+                                <label for="image">Image</label>
+                                <input type="file" value="<%=Cateogary.image[0] %>"  name="image"  >
+                            </div>
+              
+                        </div>
+        
+                        <div class="btn-container">
+                            <button class="btn" type="submit">Submit</button>
+                        </div>
+                       
+                    </div>
+                    <% if(Cateogary.image.length !== 0) {%>
+
+                        <div class="card-body ">                       
+                            <img src="<%=Cateogary.image[0] %>" alt="" style="width: 200px;"> 
+                            <a href="/api/deleteImgCategory?name=<%=Cateogary.image[0] %>&id=<%=Cateogary._id %>"><i class="bi bi-trash3-fill text-black fs-3" style="margin-top:-100px;"></i></a>
+                        </div>
+                        
+
+                    <% } %>    
+                   
+              
+
+                   
+                    
+                </form>
+                
+            </div>
+           
+
+    </section>
+    <!-- CONTENT -->
+
+
+    <script src="script.js"></script>
+</body>
+<!-- Option 1: Include in HTML -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</html>
+
+
