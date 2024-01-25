@@ -2,7 +2,6 @@
 
 var Userdb = require("../../model/User schema")
 var otpdb = require("../../model/otp.schema")
-const bcrypt = require('bcrypt');
 const nodemailer = require("nodemailer")
 const Mailgen = require("mailgen")
 const Product = require("../../model/product.schema")
