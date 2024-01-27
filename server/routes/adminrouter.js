@@ -214,7 +214,7 @@ route.get('/admin/findProductoffer',controller.findProductoffer)
 
 route.get('/admin/findreferralOffer',controller.findreferral)
 
-
+route.get('/admin/findOfferCateogary',controller.findOfferCateogary)
 
 
 module.exports=route;

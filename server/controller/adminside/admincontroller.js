@@ -1265,3 +1265,20 @@ res.send({url:`/admin/referralOffer`})
 }
 
 }
+
+
+exports.findOfferCateogary=async(req,res,next)=>{
+
+  try{
+
+  
+  
+    const category=  await Cateogary.find({ status: true })
+
+    res.send(category) 
+
+  }catch(err){
+    res.send(err)
+  }
+
+}

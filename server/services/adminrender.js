@@ -233,7 +233,7 @@ exports.adminOffer=(req,res,next)=>{
 
 exports.addoffer=(req,res)=>{
 
-    axios.get(`http://localhost:${process.env.PORT}/admin/findCateogary`)   
+    axios.get(`http://localhost:${process.env.PORT}/admin/findOfferCateogary`)   
     .then((response)=>{      
        
         res.render("adminAddOffer",{Cateogary:response.data}) 
