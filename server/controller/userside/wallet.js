@@ -11,7 +11,7 @@ var razorpayInstance = new Razorpay({
   key_secret: process.env.RAZORPAY_SECRET_KEY
 });
 
-
+//hy
 
 exports.addWallet = async (req, res) => {
   req.session.walletAddAmount = req.body.amount
