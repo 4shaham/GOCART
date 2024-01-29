@@ -27,7 +27,7 @@ $(document).ready(function () {
                     "description": "Test Transaction",
                     "image": "https://example.com/your_logo",
                     "order_id": res.order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-                    "callback_url": "http://localhost:8880/api/WalletrayzorPayment-verification",
+                    "callback_url":"/api/WalletrayzorPayment-verification",
                     "prefill": {
                         "name": "Gaurav Kumar",
                         "email": "gaurav.kumar@example.com",

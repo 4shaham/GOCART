@@ -48,7 +48,7 @@ $(document).ready(function () {
             image: "https://example.com/your_logo",
             order_id: res.order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
             callback_url:
-              "http://localhost:8880/api/rayzorPayment-verification",
+              "/api/rayzorPayment-verification",
             prefill: {
               name: "Gaurav Kumar",
               email: "gaurav.kumar@example.com",
@@ -251,6 +251,7 @@ function closeModal() {
 //   console.log('hiii',walletBalance);
 
 // }
+
 
 var walletBtn = document.getElementById("walletBtn");
 
