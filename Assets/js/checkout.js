@@ -290,15 +290,9 @@ walletBtn.addEventListener("click", (e) => {
         w.innerHTML = walletBalance - value;
       }
 
-      // walletCalculation()
     },
     error: function (xhr, status, error) {},
   });
 });
 
-// function walletCalculation(){
 
-//   document.getElementById("total-display").innerHTML =
-//   document.getElementById("totalPrice").value = 1;
-
-// }

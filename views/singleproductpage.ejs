@@ -156,9 +156,7 @@
                 <dd class="col-9">
                   <%= product[i].color %>
                 </dd>
-
-                <!-- <dt class="col-3">Material</dt>
-                  <dd class="col-9">Cotton, Jeans</dd> -->
+                    
 
                 <dt class="col-3">Brand</dt>
                 <dd class="col-9">
@@ -168,19 +166,8 @@
 
               <hr />
 
-              <div class="row mb-4">
-                <!-- <div class="col-md-4 col-6">
-                    <label class="mb-2">Size</label>
-                    <select class="form-select border border-secondary" style="height: 35px;">
-                      <option>Small</option>
-                      <option>Medium</option>
-                      <option>Large</option>
-                    </select>
-                  </div> -->
-                <!-- col.// -->
-
-              </div>
-              <a href="/buyNowPage?id=<%= product[i]._id %>" class="btn btn-warning shadow-0"> Buy now </a>
+             
+              <!-- <a href="/buyNowPage?id=<%= product[i]._id %>" class="btn btn-warning shadow-0"> Buy now </a> -->
               <% if(product[i].instock==0) { %>
                 <a href="" class="btn btn-danger shadow-0">out of stock</a>
                 <% } else if(isCart==null) { %>

@@ -577,7 +577,7 @@ exports.unblockUser = async (req, res) => {
 }
 
 exports.logout = (req, res) => {
-  req.session.admin = true
+  delete  req.session.admin 
   res.redirect("/adminlogin")
 }
 
