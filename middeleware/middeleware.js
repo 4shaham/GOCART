@@ -21,11 +21,11 @@ exports.checking = (req, res, next) => {
 }
 
 exports.adminchecking = (req, res,next) => {
-  if (req.session.admin!=true) {
+  if (! req.session.admin==true) {
     res.redirect("/adminlogin")
   }else {
     next()
-  } 
+  }
 }
 
 exports.userBlockedAuth=(req,res,next)=>{
