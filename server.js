@@ -18,21 +18,19 @@ app.use(bodyParser.json());
  const PORT=process.env.PORT||4500
 
 
- 
- app.use((req, res, next) => {
+app.use(session({
+  secret: 'sessionSecrect',
+  resave: false,
+  saveUninitialized: true
+
+}));
+
+app.use((req, res, next) => {
   res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); 
   res.setHeader("Pragma", "no-cache"); 
   res.setHeader("Expires", "0"); 
   next()
-  
-})
-
-
-app.use(session({  
-  secret: 'sessionSecrect',
-  resave: false,
-  saveUninitialized: true
-}))
+});
  
 
   //login request
