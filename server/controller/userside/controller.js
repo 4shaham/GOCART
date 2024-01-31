@@ -614,9 +614,11 @@ exports.userUpdate = async (req, res, next) => {
   try {
     const user = await Userdb.updateOne(
       { _id: userId },
-      { $set: { name: req.body.name, email: req.body.email } }
+      { $set: { name: req.body.name } }
     );
+    res.redirect('/logout')
   } catch (err) {
+    console.log(err);
     next(err);
   }
 };
