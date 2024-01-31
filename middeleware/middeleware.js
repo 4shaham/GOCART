@@ -25,7 +25,7 @@ exports.adminchecking = (req, res,next) => {
     res.redirect("/adminlogin")
   }else {
     next()
-  }
+  } 
 }
 
 exports.userBlockedAuth=(req,res,next)=>{
